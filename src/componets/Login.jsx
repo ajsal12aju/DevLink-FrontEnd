@@ -28,6 +28,8 @@ data.userData
 ))
 navigate("/")
     } catch (error) { 
+      navigate("/login")
+
         console.log(error)
     }
   }
