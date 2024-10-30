@@ -6,6 +6,7 @@ function Body() {
   return (
     <div>
       <Navbar/>
+      
       <Outlet/>
     </div>
   )

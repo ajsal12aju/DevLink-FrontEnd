@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser } from '../utils/userSlice'
 import { useNavigate } from 'react-router-dom'
+import { BASE_URL } from '../utils/constant'
+
 
 function Login() {
   const [email, setEmailId] = useState('')
@@ -12,9 +14,10 @@ function Login() {
   const navigate = useNavigate()
   const userDetails = useSelector((state)=> state.user)
 console.log(userDetails, "==userDetails==")
+
   const handleLogin = async ()=>{
     try {
-        const res = await axios.post("http://localhost:3000/login", {
+        const res = await axios.post(BASE_URL + "/login", {
             email,
             password
         },{withCredentials:true})
