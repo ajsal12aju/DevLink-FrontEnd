@@ -7,10 +7,10 @@ function Login() {
 
   const handleLogin = async ()=>{
     try {
-        const res = axios.post("http://localhost:3000/login", {
+        const res = await axios.post("http://localhost:3000/login", {
             email,
             password
-        })
+        },{withCredentials:true})
         console.log(res)
     } catch (error) {
         console.log(error)
@@ -23,7 +23,7 @@ function Login() {
   <div className="card-body">
     <h2 className="card-title">Welcome To Login</h2>
     <div>
-
+ 
 <label className="form-control w-full max-w-xs my-2">
   <div className="label">
     <span className="label-text">Email</span>
