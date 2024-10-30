@@ -27,7 +27,7 @@ data.userData
 
 ))
 navigate("/")
-    } catch (error) {
+    } catch (error) { 
         console.log(error)
     }
   }
