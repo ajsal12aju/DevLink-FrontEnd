@@ -29,8 +29,7 @@ data.userData
 ))
 navigate("/")
     } catch (error) { 
-      setError(error)
-      navigate("/login")
+      setError(error.message)
 
         console.log(error)
     }
@@ -55,7 +54,7 @@ navigate("/")
     <span className="label-text">password</span>
   </div>
   <input type="text" value={password}  onChange={(e)=> setPassword(e.target.value)}  placeholder="Type here" className="input input-bordered w-full max-w-xs" />
-<p>{error}</p>
+<p className='text-red'>{error}</p>
 </label>
     </div>
     <div className="card-actions justify-center my-2">
