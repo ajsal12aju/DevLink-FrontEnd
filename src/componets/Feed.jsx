@@ -27,7 +27,7 @@ fetchFeeds()
 
   return  feeds && (
     <div>
-      <UserCard user={feeds[0]}/>
+      <UserCard user={feeds?.data[0]}/>
     </div>
   )
 }
