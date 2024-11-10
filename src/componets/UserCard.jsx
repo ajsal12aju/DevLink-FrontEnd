@@ -18,9 +18,9 @@ function UserCard({user}) {
         <div className="badge badge-secondary">{user?.lastName}</div>
       </h2>
       <p>{user?.about}</p>
-      <div className="card-actions justify-end">
-        <button className="badge badge-outline">Ignore</button>
-        <button className="badge badge-outline">Interested</button>
+      <div className="card-actions justify-center my-4">
+        <button className="btn btn-secondary">Ignore</button>
+        <button className="btn btn-primary">Interested</button>
       </div>
     </div>
   </div>

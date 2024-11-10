@@ -1,9 +1,10 @@
 import React from 'react'
+import ProfileEdit from './ProfileEdit'
 
-function Profile() {
+const Profile = () => {
   return (
     <div>
-      Profile
+      <ProfileEdit/>
     </div>
   )
 }
