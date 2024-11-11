@@ -16,7 +16,7 @@ function Feed() {
       dispatch(addFeed(feeds))
     } catch (error) {
       // error
-    }
+    } 
    }
    useEffect(()=>{
 if(feeds) return
