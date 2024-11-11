@@ -20,7 +20,7 @@ const Connections = () => {
     }
     useEffect(()=>{
         fetchConnections()
-    })
+    },[])
     if(connections?.length === 0 ) return <h1>no connections</h1>
   return (
     <div className='text-center my-10'>
