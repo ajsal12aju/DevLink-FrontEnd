@@ -22,7 +22,7 @@ function App() {
        <Route path="/profile" element={<Profile/>} />
               <Route path="/connections" element={<Connections/>} />
 
-       <Route path="/requests" element={<Profile/>} />
+       <Route path="/requests" element={</>} />
 
            </Route>
      </Routes>
