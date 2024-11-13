@@ -2,6 +2,10 @@ import React from 'react'
 
 function UserCard({user}) {
     console.log(user, "==user==")
+
+    const handleFeedAction = async () =>{
+        
+    }
      
   return (
     <>
