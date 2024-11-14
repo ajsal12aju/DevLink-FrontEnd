@@ -42,7 +42,7 @@ navigate("/")
    try {
     const res = await axios.post(BASE_URL+ "/signup", {firstName,lastName,email,password}, {withCredentials:true})
     console.log(res,  "==signupres==")
-     dispatch(addUser(res.data))
+     dispatch(addUser(res.data.userData))
      return navigate("/profile")
   } catch (error) {
       setError(error.message)
