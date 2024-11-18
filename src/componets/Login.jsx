@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constant";
-import bgImage from "../assets/images/bg.jpg";
+import bgImage from "../assets/images/allbg.jpeg";
 import hey from "../assets/images/hey.jpg";
 
 function Login() {

@@ -5,6 +5,7 @@ import axios from 'axios'
 import { BASE_URL } from '../utils/constant'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser } from '../utils/userSlice'
+import bgImage from "../assets/images/allbg.jpeg";
 
 function Body() {
 
@@ -34,7 +35,13 @@ function Body() {
       }
     },[])
   return (
-    <div>
+    <div style={{
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        height: "100%",
+      }}>
       <Navbar/>
 
       <Outlet/>
