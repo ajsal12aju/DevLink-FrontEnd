@@ -40,8 +40,7 @@ function Body() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        height:'80%'
-      }}>
+        height:'100vh'      }}>
       <Navbar/>
 
       <Outlet/>

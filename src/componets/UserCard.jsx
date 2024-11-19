@@ -22,7 +22,7 @@ const dispatch = useDispatch()
      
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center">
   <div className="card bg-base-100 w-96 shadow-xl">
     <figure>
       <img
@@ -41,6 +41,34 @@ const dispatch = useDispatch()
       </div>
     </div>
   </div>
+  <div className="w-[280px] h-[400px] rounded-[20px] bg-[#1b233d] p-2.5 overflow-hidden shadow-md hover:scale-105 transition-transform duration-500 ease-in-out">
+  <div
+  className="h-[250px] rounded-[15px] flex flex-col relative bg-cover bg-center"
+  style={{ backgroundImage: `url(${user?.photoUrl})` }}
+>
+    
+  </div>
+  <div className="bottom-section mt-5 text-center">
+    <span className="text-white text-lg font-semibold">{user?.firstName + " " + user?.lastName}</span>
+          <p className='text-white'>{user?.about}</p>
+
+   <div className="flex justify-center mt-7 space-x-4">
+  <button
+    className="w-32 py-2 rounded-md bg-[#3a4b7a] text-white shadow-lg hover:bg-[#4c5d94] focus:ring focus:ring-blue-500"
+    onClick={() => handleFeedAction("ignored", user?._id)}
+  >
+    Ignore
+  </button>
+  <button
+    className="w-32 py-2 rounded-md bg-[#5a9375] text-white shadow-lg hover:bg-[#6ba88b] focus:ring focus:ring-green-500"
+    onClick={() => handleFeedAction("interested", user?._id)}
+  >
+    Interested
+  </button>
+</div>
+  </div>
+</div>
+
 </div>
 
     </>
