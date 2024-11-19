@@ -20,7 +20,7 @@ function Navbar() {
    }
   return (
     <div>
-<nav className="bg-slate-900 border-gray-200 py-2.5 dark:bg-gray-900 text-white">
+<nav className="bg-slate-900 border-gray-200 py-2.5 dark:bg-gray-800 text-white">
   <div className="flex items-center justify-between max-w-screen-xl px-4 mx-auto">
     {/* Logo Section */}
     <Link to="/" className="flex items-center">
