@@ -40,7 +40,7 @@ function Body() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        height: "100%",
+        height:'80%'
       }}>
       <Navbar/>
 

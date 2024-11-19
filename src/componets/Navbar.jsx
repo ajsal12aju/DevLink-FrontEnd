@@ -30,14 +30,14 @@ function Navbar() {
     {/* Right Section */}
     <div className="flex items-center lg:order-2">
       {userDetails && (
-        <div className="hidden mt-2 mr-4 sm:inline-block">
-          <span className="text-sm text-gray-500 dark:text-gray-400">Welcome, {userDetails.firstName}</span>
+        <div className="hidden mr-2 sm:inline-block">
+          <span className="text-lg text-white dark:text-gray-400">Welcome, {userDetails.firstName}</span>
         </div>
       )}
 
       {/* Profile Dropdown */}
       {userDetails && (
-        <div className="dropdown dropdown-end mx-5">
+        <div className="dropdown dropdown-end mx-5 bg-slate-900 border-gray-200 py-2.5 dark:bg-gray-800 text-white">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
               <img
@@ -48,15 +48,15 @@ function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-slate-900 border-gray-200 py-2.5 dark:bg-gray-800 text-white text-lg rounded-box z-[1] mt-3 w-52 p-2 shadow "
           >
-            <li>
-              <Link to="/profile" className="justify-between">
+            <li className='hover:bg-gray-700 rounded-box'>
+              <Link to="/profile" className="justify-between text-lg">
                 Profile
               </Link>
             </li>
-            <li>
-              <a onClick={handleLogout}>Logout</a>
+            <li className='hover:bg-gray-700 rounded-box'>
+              <a className='text-lg' onClick={handleLogout}>Logout</a>
             </li>
           </ul>
         </div>
