@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constant";
 import bgImage from "../assets/images/allbg.jpeg";
 import hey from "../assets/images/hey.jpg";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
   const [email, setEmailId] = useState("");
@@ -22,8 +22,8 @@ function Login() {
   const userDetails = useSelector((state) => state.user);
   console.log(userDetails, "==userDetails==");
 
-  // const notifySuccess = (message) => toast.success(message);
-  // const notifyError = (message) => toast.error(message);
+  const notifySuccess = (message) => toast.success(message);
+  const notifyError = (message) => toast.error(message);
 
   const handleLogin = async () => {
     try {
@@ -33,8 +33,11 @@ function Login() {
         { withCredentials: true }
       );
       dispatch(addUser(res.data.userData));
-      // notifySuccess("Login successful!");
-      navigate("/");
+      notifySuccess("Login successful!");
+       setTimeout(() => {
+      navigate("/"); 
+    }, 500);
+
     } catch (error) {
       setError("Login failed. Please check your credentials.");
       notifyError("Login failed!");
@@ -49,8 +52,10 @@ function Login() {
         { withCredentials: true }
       );
       dispatch(addUser(res.data.userData));
-      // notifySuccess("Signup successful! Redirecting...");
+      notifySuccess("Signup successful! Redirecting...");
+       setTimeout(() => {
       navigate("/profile");
+    }, 500);
     } catch (error) {
       setError("Signup failed. Please try again.");
       notifyError("Signup failed!");
@@ -70,7 +75,7 @@ function Login() {
         alignItems: "center",
       }}
     >
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       <div className="bg-opacity-80 bg-gray-900 text-white flex justify-center shadow-xl rounded-lg">
         <div className="m-0 sm:m-10 flex justify-center flex-1 w-[600px]">
           <div className="lg:w-1/2 xl:w-5/12 p-3 sm:p-6" style={{paddingLeft:'0px'}}>
