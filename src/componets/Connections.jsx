@@ -29,16 +29,16 @@ const Connections = () => {
     );
 
   return (
-    <div className="min-h-screen bg-[#1b233d] py-10">
+    <div className="py-14">
       <div className="max-w-6xl mx-auto px-4">
         {/* <h1 className="text-4xl font-bold text-white text-center mb-8">
           Connections
         </h1> */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {connections.map((connection) => (
+          {connections?.map((connection) => (
             <div
               key={connection.email}
-              className="bg-[#2a3459] rounded-lg p-6 flex flex-col items-center text-center shadow-lg hover:shadow-2xl hover:bg-[#3b466e] transition duration-300"
+              className="bg-[#1b233d] rounded-lg p-6 flex flex-col items-center text-center shadow-lg hover:shadow-2xl hover:bg-[#3b466e] transition duration-300"
             >
               <img
                 src={connection.photoUrl}
