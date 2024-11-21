@@ -1,12 +1,18 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { BASE_URL } from "../utils/constant";
 import { useDispatch } from "react-redux";
 import { removeUserFromFeed } from "../utils/feedSlice";
+import { useSwipeable } from "react-swipeable";
 
 function UserCard({ user }) {
   const dispatch = useDispatch();
 
+  // Track the swipe state (for animating the swipe)
+  const [swipe, setSwipe] = useState(0);
+  const [isSwiped, setIsSwiped] = useState(false); // Track if the card has been swiped
+
+  // Handle feed actions for Ignore and Interested
   const handleFeedAction = async (status, userId) => {
     try {
       await axios.post(
@@ -15,18 +21,55 @@ function UserCard({ user }) {
         { withCredentials: true }
       );
       dispatch(removeUserFromFeed(userId));
+      setIsSwiped(true); // Mark that the card has been swiped
+      setSwipe(0); // Reset swipe to center after the action
     } catch (error) {
       console.error("Error handling feed action", error);
     }
   };
 
+  // Swipe handlers for left and right
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => {
+      handleFeedAction("ignored", user?._id); // Ignore on swipe left
+      setSwipe(-100); // Move the card to the left
+    },
+    onSwipedRight: () => {
+      handleFeedAction("interested", user?._id); // Interested on swipe right
+      setSwipe(100); // Move the card to the right
+    },
+    onSwiping: (e) => {
+      setSwipe(e.deltaX); // Track the drag movement to animate
+    },
+    trackMouse: true, // Allow mouse tracking to enable swiping on desktop as well
+    preventDefaultTouchmoveEvent: true, // Prevent default touchmove behavior
+  });
+
+  // Apply smooth transition and reset to center when swipe action is completed
+  const getCardStyle = () => {
+    if (isSwiped) {
+      return {
+        transform: `translateX(${swipe}px)`,
+        transition: "transform 0.3s ease-out", // Smooth transition after swipe completion
+      };
+    }
+    return {
+      transform: `translateX(${swipe}px)`,
+      transition: swipe === 0 ? "transform 0.3s ease" : "none", // No transition while swiping
+    };
+  };
+
   return (
-    <div className="flex items-center justify-center">
+    <div
+      className="flex items-center justify-center"
+      {...swipeHandlers} // Spread swipe handlers here
+      style={getCardStyle()}
+    >
       <div className="w-[300px] h-[480px] rounded-[20px] bg-[#1b233d] p-6 shadow-md hover:scale-105 transition-transform duration-300">
         {/* User Profile Picture */}
         <div
           className="h-[250px] w-full rounded-lg bg-cover bg-center"
-          style={{ backgroundImage: `url(${user?.photoUrl || '/placeholder.png'})` }}
+          style={{ backgroundImage: `url(${user?.photoUrl || "/placeholder.png"})` }}
         ></div>
 
         {/* User Details Section */}
@@ -80,4 +123,3 @@ function UserCard({ user }) {
 }
 
 export default UserCard;
-
