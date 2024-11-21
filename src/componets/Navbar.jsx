@@ -99,7 +99,8 @@ function Navbar() {
     </div>
 
     {/* Navigation Links */}
-    <div
+    {userDetails && (
+  <div
       className="items-center justify-between w-full lg:flex lg:w-auto lg:order-1"
       id="mobile-menu-2"
     >
@@ -139,6 +140,8 @@ function Navbar() {
         </li>
       </ul>
     </div>
+    )}
+      
   </div>
 </nav>
 
