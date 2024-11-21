@@ -7,12 +7,14 @@ import { BASE_URL } from "../utils/constant";
 const Connections = () => {
   const dispatch = useDispatch();
   const connections = useSelector((state) => state.connection);
+  console.log(connections, "==connections==")
 
   const fetchConnections = async () => {
     try {
       const res = await axios.get(BASE_URL + "/user/connections", {
         withCredentials: true,
       });
+
       dispatch(addConnections(res?.data?.data));
     } catch (error) {
       console.log(error);
@@ -35,33 +37,35 @@ const Connections = () => {
           Connections
         </h1> */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {connections?.map((connection) => (
+          {connections
+            ?.filter((connection) => connection)
+            .map((connection) => (
             <div
-              key={connection.email}
+              key={connection?.email}
               className="bg-[#1b233d] rounded-lg p-6 flex flex-col items-center text-center shadow-lg hover:shadow-2xl hover:bg-[#3b466e] transition duration-300"
             >
               <img
-                src={connection.photoUrl}
-                alt={`${connection.firstName} ${connection.lastName}`}
+                src={connection?.photoUrl}
+                alt={`${connection?.firstName} ${connection?.lastName}`}
                 className="w-24 h-24 rounded-full mb-4 object-cover border-2 border-[#596a9e]"
               />
               <h2 className="text-lg font-semibold text-white">
-                {`${connection.firstName} ${connection.lastName}`}
+                {`${connection?.firstName} ${connection?.lastName}`}
               </h2>
               <p className="text-gray-300 text-sm italic mt-1">
-                {connection.about || "This user has no about section."}
+                {connection?.about || "This user has no about section."}
               </p>
               <p className="text-gray-400 text-sm mt-2">
-                <strong>Age:</strong> {connection.age}
+                <strong>Age:</strong> {connection?.age}
               </p>
               <p className="text-gray-400 text-sm">
-                <strong>Email:</strong> {connection.email}
+                <strong>Email:</strong> {connection?.email}
               </p>
-              {connection.skills?.length > 0 ? (
+              {connection?.skills?.length > 0 ? (
                 <div className="mt-4">
                   <h3 className="text-gray-300 font-medium">Skills:</h3>
                   <ul className="flex flex-wrap justify-center mt-2">
-                    {connection.skills.map((skill, index) => (
+                    {connection?.skills.map((skill, index) => (
                       <li
                         key={index}
                         className="text-sm text-gray-200 bg-[#3a4670] px-3 py-1 rounded-full m-1"

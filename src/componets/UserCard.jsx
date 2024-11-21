@@ -22,7 +22,7 @@ function UserCard({ user }) {
 
   return (
     <div className="flex items-center justify-center">
-      <div className="w-[300px] h-[440px] rounded-[20px] bg-[#1b233d] p-6 shadow-md hover:scale-105 transition-transform duration-300">
+      <div className="w-[300px] h-[480px] rounded-[20px] bg-[#1b233d] p-6 shadow-md hover:scale-105 transition-transform duration-300">
         {/* User Profile Picture */}
         <div
           className="h-[250px] w-full rounded-lg bg-cover bg-center"

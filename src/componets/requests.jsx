@@ -38,13 +38,13 @@ const Requests = () => {
     return <h1 className="text-center text-white mt-10">No requests</h1>;
 
   return (
-    <div className="bg-[#1b233d] min-h-screen p-10">
+    <div className="p-14">
       {/* <h1 className="text-center text-white text-3xl font-bold mb-10">Requests</h1> */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {requests.map((req) => (
           <div
             key={req._id}
-            className="relative bg-[#2a324b] p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-white"
+            className="relative bg-[#1b233d] p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-white"
           >
             {/* Profile Picture and Info */}
             <div className="flex items-center gap-4 mb-4">
