@@ -8,11 +8,9 @@ import { useSwipeable } from "react-swipeable";
 function UserCard({ user }) {
   const dispatch = useDispatch();
 
-  // Track the swipe state (for animating the swipe)
   const [swipe, setSwipe] = useState(0);
-  const [isSwiped, setIsSwiped] = useState(false); // Track if the card has been swiped
+  const [isSwiped, setIsSwiped] = useState(false);
 
-  // Handle feed actions for Ignore and Interested
   const handleFeedAction = async (status, userId) => {
     try {
       await axios.post(
@@ -21,8 +19,8 @@ function UserCard({ user }) {
         { withCredentials: true }
       );
       dispatch(removeUserFromFeed(userId));
-      setIsSwiped(true); // Mark that the card has been swiped
-      setSwipe(0); // Reset swipe to center after the action
+      setIsSwiped(true); 
+      setSwipe(0);
     } catch (error) {
       console.error("Error handling feed action", error);
     }
@@ -31,38 +29,37 @@ function UserCard({ user }) {
   // Swipe handlers for left and right
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => {
-      handleFeedAction("ignored", user?._id); // Ignore on swipe left
-      setSwipe(-100); // Move the card to the left
+      handleFeedAction("ignored", user?._id); 
+      setSwipe(-100);
     },
     onSwipedRight: () => {
-      handleFeedAction("interested", user?._id); // Interested on swipe right
-      setSwipe(100); // Move the card to the right
+      handleFeedAction("interested", user?._id); 
+      setSwipe(100);
     },
     onSwiping: (e) => {
-      setSwipe(e.deltaX); // Track the drag movement to animate
+      setSwipe(e.deltaX); 
     },
-    trackMouse: true, // Allow mouse tracking to enable swiping on desktop as well
-    preventDefaultTouchmoveEvent: true, // Prevent default touchmove behavior
+    trackMouse: true,
+    preventDefaultTouchmoveEvent: true, 
   });
 
-  // Apply smooth transition and reset to center when swipe action is completed
   const getCardStyle = () => {
     if (isSwiped) {
       return {
         transform: `translateX(${swipe}px)`,
-        transition: "transform 0.3s ease-out", // Smooth transition after swipe completion
+        transition: "transform 0.3s ease-out", 
       };
     }
     return {
       transform: `translateX(${swipe}px)`,
-      transition: swipe === 0 ? "transform 0.3s ease" : "none", // No transition while swiping
+      transition: swipe === 0 ? "transform 0.3s ease" : "none",
     };
   };
 
   return (
     <div
       className="flex items-center justify-center"
-      {...swipeHandlers} // Spread swipe handlers here
+      {...swipeHandlers}
       style={getCardStyle()}
     >
       <div className="w-[300px] h-[480px] rounded-[20px] bg-[#1b233d] p-6 shadow-md hover:scale-105 transition-transform duration-300">
