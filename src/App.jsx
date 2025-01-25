@@ -7,6 +7,7 @@ import Feed from "./componets/Feed"
 import Profile from "./componets/Profile"
 import Connections from "./componets/Connections"
 import Requests from "./componets/requests"
+import ChatPage from "./componets/Chat"
 
 
 function App() {
@@ -17,15 +18,13 @@ function App() {
     <BrowserRouter basename="/">
      <Routes>
        <Route path="/" element={<Body/>}>   
-              <Route path="/" element={<Feed/>} />
-
+       <Route path="/" element={<Feed/>} />
        <Route path="/login" element={<Login/>} />
        <Route path="/profile" element={<Profile/>} />
-              <Route path="/connections" element={<Connections/>} />
-
+       <Route path="/connections" element={<Connections/>} />
+       <Route path="/chat" element={<ChatPage/>} />
        <Route path="/requests" element={<Requests/>} />
-
-           </Route>
+     </Route>
      </Routes>
     </BrowserRouter>
     </Provider>

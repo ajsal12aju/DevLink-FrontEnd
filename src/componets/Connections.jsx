@@ -1,13 +1,21 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionSlice";
 import { BASE_URL } from "../utils/constant";
 
 const Connections = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const connections = useSelector((state) => state.connection);
-  console.log(connections, "==connections==")
+
+  const handleChat = (connection) => {
+    console.log(connection, "=connections===")
+    navigate("/chat", { state: { connection } });
+  };
 
   const fetchConnections = async () => {
     try {
@@ -42,6 +50,7 @@ const Connections = () => {
             .map((connection) => (
             <div
               key={connection?.email}
+              onClick={() => handleChat(connection)}
               className="bg-[#1b233d] rounded-lg p-6 flex flex-col items-center text-center shadow-lg hover:shadow-2xl hover:bg-[#3b466e] transition duration-300"
             >
               <img
