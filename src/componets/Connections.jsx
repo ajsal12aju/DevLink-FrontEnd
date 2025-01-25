@@ -13,10 +13,10 @@ const Connections = () => {
   const connections = useSelector((state) => state.connection);
 
   const handleChat = (connection) => {
-    console.log(connection, "=connections===")
-    navigate("/chat", { state: { connection } });
+    console.log(connection, "=connections==="); // Verify the data being passed
+    navigate("/chat", { state: { selectedConnection: connection } });
   };
-
+  
   const fetchConnections = async () => {
     try {
       const res = await axios.get(BASE_URL + "/user/connections", {
