@@ -20,7 +20,6 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userDetails = useSelector((state) => state.user);
-  console.log(userDetails, "==userDetails==");
 
   const notifySuccess = (message) => toast.success(message);
   const notifyError = (message) => toast.error(message);
